@@ -5,7 +5,7 @@ import org.apache.commons.dbcp.BasicDataSource;
 import javax.sql.DataSource;
 
 public class ConnectionPoolHolder {
-    private static volatile DataSource dataSource;
+    private static DataSource dataSource;
 
     public static DataSource getDataSource() {
         ConfigManager configManager=ConfigManager.getInstance();

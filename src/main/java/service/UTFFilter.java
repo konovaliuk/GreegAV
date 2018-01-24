@@ -7,10 +7,11 @@ import java.io.IOException;
 @WebFilter("/MainServlet")
 public class UTFFilter implements Filter {
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
 
     }
 
+    // Setting UTF-8 for all pages
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");

@@ -1,8 +1,6 @@
 package entities;
 
-import dao.DBOperation;
-
-import java.io.Serializable;
+import dao.DAOOperation;
 
 public class Activity {
     private int actID;
@@ -25,13 +23,14 @@ public class Activity {
     }
 
     public static Activity getActByID(int actID) {
-        for (Activity activity : DBOperation.getActListFromDB()) {
+        for (Activity activity : DAOOperation.getActListFromDB()) {
             if (activity.actID == actID) return activity;
         }
         return null;
     }
+
     public String getUserNameByID(int userID) {
-        for (User user : DBOperation.getUserListFromDB()) {
+        for (User user : DAOOperation.getUserListFromDB()) {
             if (user.getUserID() == userID) return user.getUserName();
         }
         return null;
@@ -86,7 +85,7 @@ public class Activity {
     }
 
     public String getActNameByID(int actID) {
-        for (Activity activity : DBOperation.getActListFromDB()) {
+        for (Activity activity : DAOOperation.getActListFromDB()) {
             if (activity.actID == actID) return activity.actName;
         }
         return "";

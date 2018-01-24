@@ -26,6 +26,4 @@ public class RegisterCommand implements ICommand {
         }
         return "";
     }
-
-
 }

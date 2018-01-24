@@ -1,9 +1,7 @@
 package entities;
 
-import dao.DBOperation;
+import dao.DAOOperation;
 
-import javax.servlet.ServletContext;
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class User {
@@ -12,7 +10,7 @@ public class User {
     private String userPassword;
     private String userName;
     private boolean isAdmin = false;
-    private ArrayList<Activity> actList = new ArrayList<Activity>();
+    private ArrayList<Activity> actList = new ArrayList<>();
 
     public User() {
     }
@@ -27,7 +25,7 @@ public class User {
     }
 
     public static User isUserValid(String loginName, String loginPass) {
-        for (User tmpUser : DBOperation.getUserListFromDB()) {
+        for (User tmpUser : DAOOperation.getUserListFromDB()) {
             if (tmpUser.getUserLogin().equalsIgnoreCase(loginName) &&
                     tmpUser.getUserPassword().equals(loginPass)) {
                 return tmpUser;
@@ -44,7 +42,7 @@ public class User {
         this.userID = userID;
     }
 
-    public String getUserLogin() {
+    private String getUserLogin() {
         return userLogin;
     }
 
@@ -52,7 +50,7 @@ public class User {
         this.userLogin = userLogin;
     }
 
-    public String getUserPassword() {
+    private String getUserPassword() {
         return userPassword;
     }
 
@@ -89,17 +87,9 @@ public class User {
     }
 
     public User getUserByID(int userID) {
-        for (User user : DBOperation.getUserListFromDB()) {
+        for (User user : DAOOperation.getUserListFromDB()) {
             if (user.userID == userID)
                 return user;
-        }
-        return null;
-    }
-
-    public static String getUserNameByID(int userID) {
-        for (User user : DBOperation.getUserListFromDB()) {
-            if (user.userID == userID)
-                return user.userName;
         }
         return null;
     }

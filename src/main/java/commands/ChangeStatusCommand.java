@@ -1,6 +1,7 @@
 package commands;
 
-import dao.DBOperation;
+import dao.DAOOperation;
+import dao.DAOUser;
 import entities.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,8 +25,8 @@ public class ChangeStatusCommand implements controller.ICommand {
             if (activity != null) {
                 activity.setActStatus(FREE);
                 activity.setUserID(1);
-                activity.setUserName(User.getUserNameByID(1));
-                DBOperation.updateActivityDB(activity);
+                activity.setUserName(DAOUser.getUserNameByID(1));
+                DAOOperation.updateActivityDB(activity);
                 response.getWriter().print(Display.showPage(loggedUser, request,1));
             }
         }
@@ -33,7 +34,7 @@ public class ChangeStatusCommand implements controller.ICommand {
         if (action.equalsIgnoreCase("approve")) {
             if (activity != null) {
                 activity.setActStatus(TAKEN);
-                DBOperation.updateActivityDB(activity);
+                DAOOperation.updateActivityDB(activity);
                 response.getWriter().print(Display.showPage(loggedUser, request,1));
             }
         }
@@ -43,7 +44,7 @@ public class ChangeStatusCommand implements controller.ICommand {
                 activity.setActStatus(FORADD);
                 activity.setUserID(loggedUser.getUserID());
                 activity.setUserName(loggedUser.getUserName());
-                DBOperation.updateActivityDB(activity);
+                DAOOperation.updateActivityDB(activity);
                 response.getWriter().print(Display.showPage(loggedUser, request,1));
             }
         }
@@ -51,7 +52,7 @@ public class ChangeStatusCommand implements controller.ICommand {
         if (action.equalsIgnoreCase("drop")) {
             if (activity != null) {
                 activity.setActStatus(FORDEL);
-                DBOperation.updateActivityDB(activity);
+                DAOOperation.updateActivityDB(activity);
                 response.getWriter().print(Display.showPage(loggedUser, request,1));
             }
         }

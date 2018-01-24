@@ -15,22 +15,16 @@ public class ConnectionPool {
     private ConnectionPool() {
         try{
             pool = ConnectionPoolHolder.getDataSource();
-        } catch(Exception ex){
-            logger.error("Problem getting DataSource object:", ex);
+        } catch(Exception e){
+            logger.error(e.getMessage());
         }
     }
 
     public static synchronized ConnectionPool getInstance() {
-        logger.info("Trying to get instance of ConnectionPool.");
         if (instance == null) {
-            logger.info("Trying to create ConnectionPool instance.");
+            logger.info("ConnectioPool instance creation.");
             instance = new ConnectionPool();
-            logger.info("ConnectioPool instance created.");
         }
-        if (instance == null) {
-            logger.warn("ConnectionPool instance is still null!");
-        }
-        logger.info("The getInstance method finished successfully.");
         return instance;
     }
 
@@ -39,13 +33,13 @@ public class ConnectionPool {
         return pool.getConnection();
     }
 
-    public void closeConnection(Connection connection) throws SQLException {
+    public static void closeConnection(Connection connection) throws SQLException {
         logger.info("Trying to close connection.");
         if(connection != null){
             connection.close();
+            logger.info("The closeConnection method finished successfully.");
         } else {
             logger.warn("Connection is null!");
         }
-        logger.info("The closeConnection method finished successfully.");
     }
 }

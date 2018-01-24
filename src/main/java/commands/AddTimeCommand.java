@@ -1,6 +1,6 @@
 package commands;
 
-import dao.DBOperation;
+import dao.DAOOperation;
 import entities.Activity;
 import entities.User;
 
@@ -19,7 +19,7 @@ public class AddTimeCommand implements controller.ICommand {
         User loggedUser = (User) request.getServletContext().getAttribute("loggedUser");
         if (activity != null) {
             activity.addDuration(amount);
-            DBOperation.updateActivityDB(activity);
+            DAOOperation.updateActivityDB(activity);
             response.getWriter().print(Display.showPage(loggedUser, request,1));
         }
 

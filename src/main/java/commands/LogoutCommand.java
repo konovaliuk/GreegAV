@@ -21,7 +21,6 @@ public class LogoutCommand implements ICommand {
             ConnectionPool.getInstance().closeConnection(ConnectionPool.getInstance().getConnection());
         } catch (SQLException e) {
             logger.info("Failed to close connection in logout");
-            System.out.println("Failed to close connection in logout");
             logger.error(e.getMessage());
         }
         logger.info("LogoutCommand passed!!!");
