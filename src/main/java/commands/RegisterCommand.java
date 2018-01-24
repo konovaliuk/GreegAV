@@ -2,15 +2,14 @@ package commands;
 
 import controller.ICommand;
 import entities.User;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class RegisterCommand implements ICommand {
-    private static Logger logger = LoggerFactory.getLogger(RegisterCommand.class);
+    private static Logger logger = Logger.getLogger(RegisterCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -18,11 +17,10 @@ public class RegisterCommand implements ICommand {
         User loggedUser = User.isUserValid(request.getParameter("nameInput"), request.getParameter("passInput"));
 
         if (loggedUser != null) {
-            System.out.println(loggedUser.getUserName());
-            response.getWriter().print(Display.showPage(loggedUser));
+            logger.info(loggedUser.getUserName() + " logged in.");
             request.getServletContext().setAttribute("loggedUser", loggedUser);
+            response.getWriter().print(Display.showPage(loggedUser, request, 1));
         } else {
-//            response.getWriter().print("Username/Password error!");
             logger.info("Username/Password error!");
             return "/error.jsp";
         }

@@ -1,17 +1,14 @@
 package controller;
 
-
 import commands.*;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class Helper {
 
-    private static Logger logger = LoggerFactory.getLogger(RegisterCommand.class);
+    private static Logger logger = org.apache.log4j.Logger.getLogger(RegisterCommand.class);
     private static Helper instance = null;
     private HashMap<String, ICommand> commands = new HashMap<>();
 
@@ -20,7 +17,8 @@ public class Helper {
         commands.put("Logout", new LogoutCommand());
         commands.put("Login", new RegisterCommand());
         commands.put("changeStatus", new ChangeStatusCommand());
-        commands.put("Add time", new AddTimeCommand());
+        commands.put("addTime", new AddTimeCommand());
+        commands.put("ChangePage", new ChangePageCommand());
     }
 
     public static Helper getInstance() {
@@ -39,9 +37,9 @@ public class Helper {
         ICommand command = commands.get(parsedCommand);
         if (command == null) {
             command = new HomeCommand();
-            logger.info("Переход на домашнюю страницу.");
+            logger.info("Transfer to homepage");
         }
-        logger.info("Переход на cтраницу " + parsedCommand);
+        logger.info("Transfer to page " + parsedCommand);
         return command;
     }
 }

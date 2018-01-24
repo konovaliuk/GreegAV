@@ -104,7 +104,6 @@ public class User {
         return null;
     }
 
-
     @Override
     public String toString() {
         String result = "\n\r";

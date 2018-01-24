@@ -1,0 +1,26 @@
+<web-app>
+    <!--<jsp-config>-->
+        <!--<taglib>-->
+            <!--<taglib-uri>mytags</taglib-uri>-->
+            <!--<taglib-location>/WEB-INF/jsp/mytaglib.tld</taglib-location>-->
+        <!--</taglib>-->
+    <!--</jsp-config>-->
+
+    <!--<servlet>-->
+        <!--<servlet-name>MainServlet</servlet-name>-->
+        <!--<servlet-class>controller.MainServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>MainServlet</servlet-name>-->
+        <!--<url-pattern>/MainServlet</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+    <!--<filter>-->
+        <!--<filter-name>UTFFilter</filter-name>-->
+        <!--<filter-class>service.UTFFilter</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>UTFFilter</filter-name>-->
+        <!--<servlet-name>MainServlet</servlet-name>-->
+    <!--</filter-mapping>-->
+</web-app>
